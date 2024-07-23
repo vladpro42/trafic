@@ -2,6 +2,8 @@ const sliderDot = document.querySelector(".portfolio__slider-dot")
 const dotsContainer = document.querySelector(".portfolio__slider-dots")
 const portfolio__list = document.querySelector(".portfolio__list")
 const portfolioDot = document.querySelectorAll(".portfolio__slider-dot")
+const portfolioItemWidth = document.querySelector(".portfolio__item").getBoundingClientRect().width
+const gapSliderPx = 30
 
 portfolioDot.forEach((item) => {
     item.addEventListener('click', slider)
@@ -13,7 +15,7 @@ function slider(event) {
     portfolioDotActive.classList.remove("portfolio__slider-dot--active")
     portfolioDotSpanActive.classList.remove("portfolio__slider-span--active")
 
-    const widthSlide = 423
+    const widthSlide = portfolioItemWidth + gapSliderPx // li width + gap
     const index = event.currentTarget.dataset.index
     portfolio__list.style.transform = `translateX(-${widthSlide * index}px)`
 
